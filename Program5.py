@@ -1,5 +1,5 @@
 #Matthew Stephenson
-#04/20/2024
+#04/24/2024
 #Program 5
 #this prog reads a list of grades, computes the average grade, the median grade, the high and low
 #grades, and print a histogram where each * represents one of the counted grade types.
@@ -12,7 +12,7 @@ def grade_counter(grades):
     grade_counts = [0] * 5 # Adjusted to 5 to include F
     for grade in grades:
         if 90 <= grade <= 100:
-            grade_counts[0] += 1 # A
+            grade_counts[0] += 1 # A100
         elif 80 <= grade < 90:
             grade_counts[1] += 1 # B
         elif 70 <= grade < 80:
