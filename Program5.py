@@ -4,19 +4,45 @@
 #this prog reads a list of grades, computes the average grade, the median grade, the high and low
 #grades, and print a histogram where each * represents one of the counted grade types.
 #################################################################################################
+def grade_counter(grades):
+    """
+    This function takes a list of grades and returns a list of counts for each grade range (A-F).
+    """
+    grade_counts = [0] * 5
+    for grade in grades:
+        grade_counts[grade // 10] += 1
+    return grade_counts
 
+def compute_stats(grades):
+    """
+    This func computes the average, median, highest, and lowest grades from the given list of grades.
+    """
+    grade_counts = grade_counter(grades)
+    total = sum(grades)
+    average = total / len(grades)
+    median = sorted(grades)[len(grades) // 2]
+    highest = max(grades)
+    lowest = min(grades)
+    return grade_counts, average, median, highest, lowest
 
-#For this program, you will read a set of numbers and store them in a list. For example, the list of
-#numbers represents a set of test grades. You may read the numbers in from the keyboard (as shown in
-#the sample below OR you may prompt the user to open a file that contains the numbers. The data
-#values should be one per line.
-#Read in the numbers and save them in a list. (Hint: append is useful here).
-#Also, create a second list that stores a set of counter values. The first element is the count of grades >=
-#90 (the A’s), the second element stores the count of grades >= 80 (the B’s), and so on. Do not use
-#individual counters. Store the counts in a 5 element list.
-#After you have read the list of grades, compute the average grade, the median grade, the high and low
-#grades, and print a histogram where each * represents one of the counted grade types
+def print_histogram(grades):
+    """
+    This func logs the computed statistics and a histogram of the grades to the standard i/o
+    """
+    grade_counts, average, median, highest, lowest = compute_stats(grades)
+    print("Average:", average)
+    print("Median:", median)
+    print("Highest:", highest)
+    print("Lowest:", lowest)
+    print("HISTOGRAM")
+    for grade in range(10):
+        print(f"{chr(grade + 65)}: {'*' * grade_counts[grade // 10]}")
 
-setnum = input("we will likely just prompt the user for something instead of passing in a file. initial commit")
+grades = []
+while True:
+    grade = input("Please enter a test grade (-1 to quit): ")
+    if grade == "-1":
+        break
+    grades.append(int(grade))
 
-print(setnum)
+print_histogram(grades)
