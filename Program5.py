@@ -7,7 +7,7 @@
 
 def grade_counter(grades):
     """
-    This function takes a list of grades and returns a list of counts for each grade range (A-F).
+    This func takes a list of grades and returns a list of counts for each grade range (A-F).
     """
     grade_counts = [0] * 5 # Adjusted to 5 to include F
     for grade in grades:
@@ -25,7 +25,7 @@ def grade_counter(grades):
 
 def compute_stats(grades):
     """
-    This function computes the average, median, highest, and lowest grades from the given list of grades.
+    This func computes the average, median, highest, and lowest grades from the given list of grades.
     """
     sorted_grades = sorted(grades)
     grade_counts = grade_counter(sorted_grades)
@@ -39,7 +39,7 @@ def compute_stats(grades):
 
 def print_histogram(grades):
     """
-    This function logs the computed statistics and a histogram of the grades to the standard i/o
+    This func logs the computed statistics and a histogram of the grades to the standard i/o
     """
     grade_counts, _, _, _, _ = compute_stats(grades)
     print(f"{len(grades)} grades were read in.")
