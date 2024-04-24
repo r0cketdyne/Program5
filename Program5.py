@@ -4,12 +4,6 @@
 #this prog reads a list of grades, computes the average grade, the median grade, the high and low
 #grades, and print a histogram where each * represents one of the counted grade types.
 #################################################################################################
-#Matthew Stephenson
-#04/20/2024
-#Program 5
-#this prog reads a list of grades, computes the average grade, the median grade, the high and low
-#grades, and print a histogram where each * represents one of the counted grade types.
-#################################################################################################
 def grade_counter(grades):
     """
     This function takes a list of grades and returns a list of counts for each grade range (A-F).
@@ -59,4 +53,4 @@ while True:
         break
     grades.append(int(grade))
 
-print_histogram(grades)100
+print_histogram(grades)
