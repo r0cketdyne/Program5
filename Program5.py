@@ -4,14 +4,23 @@
 #this prog reads a list of grades, computes the average grade, the median grade, the high and low
 #grades, and print a histogram where each * represents one of the counted grade types.
 #################################################################################################
+
 def grade_counter(grades):
     """
     This function takes a list of grades and returns a list of counts for each grade range (A-F).
     """
-    grade_counts = [0] * 5
+    grade_counts = [0] * 6 # Adjusted to 6 to include F
     for grade in grades:
-        grade_range = min(grade // 10, 4)  # Ensure grade_range does not exceed 4
-        grade_counts[grade_range] += 1
+        if 90 <= grade <= 100:
+            grade_counts[0] += 1 # A
+        elif 80 <= grade < 90:
+            grade_counts[1] += 1 # B
+        elif 70 <= grade < 80:
+            grade_counts[2] += 1 # C
+        elif 60 <= grade < 70:
+            grade_counts[3] += 1 # D
+        elif 0 <= grade < 60:
+            grade_counts[4] += 1 # F
     return grade_counts
 
 def compute_stats(grades):
@@ -40,10 +49,8 @@ def print_histogram(grades):
     print("Lowest:", "{:.2f}".format(compute_stats(grades)[4]))
     print("HISTOGRAM")
     for i, count in enumerate(grade_counts):
-        grade_letter = chr(65 + i)
-        if i < 3:
-            print(f"{grade_letter}: {'*' * count}")
-        else:
+        if i < 5: # Adjusted to 5 to include F
+            grade_letter = chr(65 + i)
             print(f"{grade_letter}: {'*' * count}")
 
 grades = []
