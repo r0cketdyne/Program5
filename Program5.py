@@ -9,7 +9,7 @@ def grade_counter(grades):
     """
     This function takes a list of grades and returns a list of counts for each grade range (A-F).
     """
-    grade_counts = [0] * 6 # Adjusted to 6 to include F
+    grade_counts = [0] * 5 # Adjusted to 5 to include F
     for grade in grades:
         if 90 <= grade <= 100:
             grade_counts[0] += 1 # A
@@ -49,9 +49,8 @@ def print_histogram(grades):
     print("Lowest:", "{:.2f}".format(compute_stats(grades)[4]))
     print("HISTOGRAM")
     for i, count in enumerate(grade_counts):
-        if i < 5: # Adjusted to 5 to include F
-            grade_letter = chr(65 + i)
-            print(f"{grade_letter}: {'*' * count}")
+        grade_letter = chr(65 + i) if i < 4 else 'F' # Correctly maps to F for the last index
+        print(f"{grade_letter}: {'*' * count}")
 
 grades = []
 while True:
